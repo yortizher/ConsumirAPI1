@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <div class="container py-3 px-3 border border-3 border-dark " id="app">
+    <h1 class="text-center">Inicio de seción</h1>
+    <div class="row py-3">
+      <label for="nombre">Nombre</label>
+      <input class="border-dark" v-model="name" type="text" id="nombre" placeholder="Nombre">
+      <span class="error" v-if="error1" style="color:red;">Los campos del modelo no son correctos</span>
+    </div>
+    <div class="row ">
+      <label for="Contraseña">Contraseña</label>
+      <input class="border-dark" v-model="password" type="text" id="contraseña" placeholder="Contraseña">
+      <span class="error" v-if="error2" style="color:red;">Los campos del nombre no son correctos</span>
+
+    </div>
+    <div class="row mt-3 d-grid gap-2">
+      <button @click="validations()" type="button" class="btn btn-primary border border-3 border-dark">Consumir</button>
+    </div>
+ 
+  </div>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="./main.js"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
