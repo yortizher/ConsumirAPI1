@@ -1,14 +1,14 @@
 var app = new Vue({
     el: '#app',
     data: {
-        name:"",
-        password:"",
+        name:"tinykoala528",
+        password:"thecat",
         arrayData:[],
-        arrayUser:[],
+        arrayDatosUser:[],
         error1:false,
         error2:false,
         
-        picture:"",
+       
     },
     methods: {
         getErrorName() {
@@ -25,60 +25,66 @@ var app = new Vue({
               this.error2 = false;
             }
           },
+          updateLocalStorage(){
+            localStorage.setItem("data",JSON.stringify(this.arrayData));
+            localStorage.setItem("user",JSON.stringify(this.arrayDatosUser));
+        },
         async consume(){
             var url = 'https://randomuser.me/api/?results=10';
-            await fetch(url)
+        await fetch(url)
             .then((response) => response.json())
             .then((data) => (this.arrayData = data.results));
             this.updateLocalStorage()
-            //console.log(this.arrayData);
-            this.arrayUser=this.arrayData.map(element=>element);
-            console.log(this.arrayUser);
-        },
-        updateLocalStorage(){
-            localStorage.setItem("data",JSON.stringify(this.arrayData));
+            
+            
         },
         validations(){
-            let name =this.name;
-            let password=this.password;
-            let picture=this.picture;
-            if (this.name =="") {
-                this.getErrorName();
-            }else{
-                this.getErrorName();
-            }if (this.optionVehicle =="") {
-                this.getErrorPassword();
-            } else{
-                this.getErrorPassword();
-            }
-            if(this.error1==false && this.error2==false){
-              const access=this.arrayUser.find((user) => {
-                if( user.login.username == name && user.login.password == password){
-                  picture =user.picture.large
-                  window.location.href = picture
-
-                }
-                return false;
-
-              })
-
-                
-                
-            }
+          var name =this.name;
+          var password=this.password;
+          
+          if (this.name =="") {
+            this.getErrorName();
+          }else{
+            this.getErrorName();
+          }if (this.password =="") {
+            this.getErrorPassword();
+          } else{
+            this.getErrorPassword();
+          }
+          if(this.error1==false && this.error2==false){
+            const access=this.arrayData.find((user) => {
+              if( user.login.username == name && user.login.password == password){
+                this.arrayDatosUser.push({usuario1:user.name.first,usuario2:user.name.last,foto:user.picture.thumbnail})
+                window.location.href = "./tabla.html"; 
+                this.updateLocalStorage();
+              }
+              return false;
+              
+            })
             
-           
             
-        }
+            
+          }
+          
+          
+          
+        },
         
-    },
+        
+      },
+      
+    
     created(){
         if (localStorage.getItem("data") !== null) {
             this.arrayData = JSON.parse(localStorage.getItem("data"));
           } else {
-            this.arrayData = this.arrayData;
+            this.consume();
           }
-        this.consume();
-    }
+          
+          
+    },
+    
+   
     
 
   })
