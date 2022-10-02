@@ -1,8 +1,8 @@
 var app = new Vue({
     el: '#app',
     data: {
-        name:"tinykoala528",
-        password:"thecat",
+        name:"",
+        password:"",
         arrayData:[],
         arrayDatosUser:[],
         error1:false,
